@@ -25,3 +25,6 @@ jobs:
       - name: execute py script
         run: |
           python main.py
+        env:
+          PASSWORD: ${{ secrets.IMACSO_PASSWORD }}
+          USERNAME: ${{ secrets.IMACSO_USERNAME }}

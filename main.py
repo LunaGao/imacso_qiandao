@@ -1,5 +1,6 @@
 from arg_cat import ArgCat
 import requests
+import json
 
 # 0. 设置公用变量
 url = "https://www.imacso.com/wp-admin/admin-ajax.php"
@@ -13,9 +14,13 @@ argcat.from_arg_and_environ(environ_override_all=False)
 payload_login = {'action': 'user_login',
                  'username': argcat.get_string("username"),
                  'password': argcat.get_string("password")}
-response = requests.request("POST", url, data=payload_login)
-cookies = response.cookies.get_dict()
+response_login = requests.request("POST", url, data=payload_login)
+cookies = response_login.cookies.get_dict()
+login_content = json.loads(response_login.text)
+print(login_content['msg'])
 # 2. 使用cookie，进行签到
 payload_qiandao = {'action': 'user_qiandao'}
-response = requests.request("POST", url, data=payload_qiandao, cookies=cookies)
+response_qiandao = requests.request("POST", url, data=payload_qiandao, cookies=cookies)
+qiandao_content = json.loads(response_qiandao.text)
+print(qiandao_content['msg'])
 
