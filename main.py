@@ -22,5 +22,6 @@ print(login_content['msg'])
 payload_qiandao = {'action': 'user_qiandao'}
 response_qiandao = requests.request("POST", url, data=payload_qiandao, cookies=cookies)
 qiandao_content = json.loads(response_qiandao.text)
+print("status: " + qiandao_content['status'])
 print(qiandao_content['msg'])
 
