@@ -28,3 +28,4 @@ jobs:
         env:
           PASSWORD: ${{ secrets.IMACSO_PASSWORD }}
           USERNAME: ${{ secrets.IMACSO_USERNAME }}
+          NOTIFICATION: ${{ secrets.FTQQ_SERVERCHAN_SEND_KEY }}
